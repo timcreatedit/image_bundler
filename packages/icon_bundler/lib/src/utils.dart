@@ -7,13 +7,13 @@
 ) {
   if (outputWidth / outputHeight > sourceWidth / sourceHeight) {
     return (
-      width: (sourceWidth * outputHeight / sourceHeight).toInt(),
+      width: (sourceWidth * outputHeight / sourceHeight).round(),
       height: outputHeight,
     );
   }
   return (
     width: outputWidth,
-    height: (sourceHeight * outputWidth / sourceWidth).toInt(),
+    height: (sourceHeight * outputWidth / sourceWidth).round(),
   );
 }
 

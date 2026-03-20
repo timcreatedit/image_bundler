@@ -65,9 +65,10 @@ void main(List<String> arguments) async {
     exit(0);
   }
 
-  final baseSizes = (args['sizes']! as String).split(',').map((x) {
-    return int.parse(x);
-  }).toSet();
+  final baseSizes =
+      (args['sizes']! as String).split(',').map((x) {
+        return int.parse(x);
+      }).toSet();
   final pixelRatios =
       (args['pixel-ratios']! as String)
           .split(',')
@@ -78,7 +79,7 @@ void main(List<String> arguments) async {
   final sizes = <int>{};
   for (var baseSize in baseSizes) {
     for (var pixelRatio in pixelRatios) {
-      sizes.add((baseSize * pixelRatio).toInt());
+      sizes.add((baseSize * pixelRatio).round());
     }
   }
 
@@ -89,25 +90,27 @@ void main(List<String> arguments) async {
     assetRelativePath: args['asset-relative-path'] ?? 'assets/',
     codeRelativePath: args['code-relative-path'] ?? 'lib/src/widgets',
     variants: sizes.toList()..sort((x, y) => x.compareTo(y)),
-    inputImages: Directory(args['input'] ?? '.')
-        .listSync()
-        .whereType<File>()
-        .where(
-          (f) => const [
-            '.svg',
-            '.png',
-            '.jpg',
-            '.jpeg',
-          ].contains(extension(f.path)),
-        )
-        .toList(),
+    inputImages:
+        Directory(args['input'] ?? '.')
+            .listSync()
+            .whereType<File>()
+            .where(
+              (f) => const [
+                '.svg',
+                '.png',
+                '.jpg',
+                '.jpeg',
+              ].contains(extension(f.path)),
+            )
+            .toList(),
   );
 
   const String logo =
       // ignore: prefer_adjacent_string_concatenation
       ' ░░▀█▀░█▀▀░█▀█░█▀█░░░█▀▄░█░█░█▀█░█▀▄░█░░░█▀▀░█▀▄\n' +
       ' ░░░█░░█░░░█░█░█░█░░░█▀▄░█░█░█░█░█░█░█░░░█▀▀░█▀▄\n' +
-      ' ░░▀▀▀░▀▀▀░▀▀▀░▀░▀░░░▀▀░░▀▀▀░▀░▀░▀▀░░▀▀▀░▀▀▀░▀░▀';
+      ' ░░▀▀▀░▀▀▀░▀▀▀░▀░▀░░░▀▀░░▀▀▀░▀░▀░▀▀░░▀▀▀░▀▀▀░▀░▀\n' +
+      ' Tims fork edition';
 
   print('');
   print(logo);

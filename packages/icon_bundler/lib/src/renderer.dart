@@ -28,8 +28,8 @@ class SpritesheetRenderer {
           );
           await renderer.paintSvg(
             svg,
-            sprite.left + ((sprite.width / 2) - (size.width / 2)).toInt(),
-            sprite.top + ((sprite.height / 2) - (size.height / 2)).toInt(),
+            sprite.left + ((sprite.width / 2) - (size.width / 2)).round(),
+            sprite.top + ((sprite.height / 2) - (size.height / 2)).round(),
             size.width,
             size.height,
           );
@@ -51,8 +51,8 @@ class SpritesheetRenderer {
           );
           await renderer.paintImage(
             resized,
-            sprite.left + ((sprite.width / 2) - (size.width / 2)).toInt(),
-            sprite.top + ((sprite.height / 2) - (size.height / 2)).toInt(),
+            sprite.left + ((sprite.width / 2) - (size.width / 2)).round(),
+            sprite.top + ((sprite.height / 2) - (size.height / 2)).round(),
             size.width,
             size.height,
           );
