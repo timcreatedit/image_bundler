@@ -114,6 +114,7 @@ $resolved
       image: AssetImage('$sheetPath'),
       source: source,
       color: color,
+      filterQuality: FilterQuality.none,
       width: maxWidth,
       height: maxWidth,
     );

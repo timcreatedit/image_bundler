@@ -77,6 +77,7 @@ class AppIcon extends StatelessWidget {
       image: AssetImage('assets/app_icon/sheet_$size.png'),
       source: source,
       color: color,
+      filterQuality: FilterQuality.none,
       width: maxWidth,
       height: maxWidth,
     );

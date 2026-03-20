@@ -98,6 +98,7 @@ void main() {
           child: si.Sprite(
             image: MemoryImage(bytes),
             source: source,
+            filterQuality: FilterQuality.none,
             width: spriteSize.toDouble(),
             height: spriteSize.toDouble(),
           ),
